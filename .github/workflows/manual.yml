@@ -1,15 +1,10 @@
-### Application Level Image CI
-### Dave Conroy <dave at tiredofit dot ca>
+# Manual Workflow
 
-name: 'Build Images'
+name: 'Manual build'
 
 on:
-  schedule:
-    - cron: 1 0 * * 6
-  push:
-    paths:
-      - '**'
-      - '!README.md'
+  workflow_dispatch:
+
 jobs:
   master:
     runs-on: ubuntu-latest
