@@ -1,9 +1,9 @@
-# github.com/tiredofit/docker-mariadb
+# github.com/rusxakep/docker-mariadb
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/tiredofit/mariadb.svg)](https://hub.docker.com/r/tiredofit/mariadb)
-[![Docker Stars](https://img.shields.io/docker/stars/tiredofit/mariadb.svg)](https://hub.docker.com/r/tiredofit/mariadb)
+[![Docker Pulls](https://img.shields.io/docker/pulls/rusxakep/mariadb.svg)](https://hub.docker.com/r/rusxakep/mariadb)
+[![Docker Stars](https://img.shields.io/docker/stars/rusxakep/mariadb.svg)](https://hub.docker.com/r/rusxakep/mariadb)
 [![Docker
-Layers](https://images.microbadger.com/badges/image/tiredofit/mariadb.svg)](https://microbadger.com/images/tiredofit/mariadb)
+Layers](https://images.microbadger.com/badges/image/rusxakep/mariadb.svg)](https://microbadger.com/images/rusxakep/mariadb)
 
 ## Introduction
 
@@ -16,7 +16,7 @@ Dockerfile to build a [MariaDB Server](https://mariadb.org) Image.
 * Includes MySQL Tuner inside image to optimize your configuration
 * Zabbix Monitoring for metrics
 
-Also has the capability of backing up embedded in the container based on the [tiredofit/dbbackup](https://github.com/tiredofit/docker-db-backup) image which includes the following features:
+Also has the capability of backing up embedded in the container based on the [rusxakep/dbbackup](https://github.com/rusxakep/docker-db-backup) image which includes the following features:
 
 * dump to local filesystem
 * Backup all databases
@@ -26,7 +26,7 @@ Also has the capability of backing up embedded in the container based on the [ti
 * select how often to run a dump
 * select when to start the first dump, whether time of day or relative to container start time
 
-* This Container uses a [customized Alpine Linux base](https://hub.docker.com/r/tiredofit/alpine) which includes [s6 overlay](https://github.com/just-containers/s6-overlay) enabled for PID 1 Init capabilities, [zabbix-agent](https://zabbix.org) for individual container monitoring, Cron also installed along with other tools (bash,curl, less, logrotate, mariadb-client, nano, vim) for easier management. It also supports sending to external SMTP servers..
+* This Container uses a [customized Alpine Linux base](https://hub.docker.com/r/rusxakep/alpine) which includes [s6 overlay](https://github.com/just-containers/s6-overlay) enabled for PID 1 Init capabilities, [zabbix-agent](https://zabbix.org) for individual container monitoring, Cron also installed along with other tools (bash,curl, less, logrotate, mariadb-client, nano, vim) for easier management. It also supports sending to external SMTP servers..
 
 
 [Changelog](CHANGELOG.md)
@@ -34,6 +34,7 @@ Also has the capability of backing up embedded in the container based on the [ti
 ## Authors
 
 - [Dave Conroy](https://github.com/tiredofit)
+- [Mikhail Baykov](https://github.com/rusxakep)
 
 ## Table of Contents
 
@@ -57,10 +58,10 @@ Also has the capability of backing up embedded in the container based on the [ti
 
 ## Installation
 
-Automated builds of the image are available on [Docker Hub](https://hub.docker.com/r/tiredofit/mariadb) and is the recommended method of installation.
+Automated builds of the image are available on [Docker Hub](https://hub.docker.com/r/rusxakep/mariadb) and is the recommended method of installation.
 
 ```bash
-docker pull tiredofit/mariadb
+docker pull rusxakep/mariadb
 ```
 
 ### Quick Start
@@ -84,7 +85,7 @@ The following directories are used for configuration and can be mapped for persi
 
 ### Environment Variables
 
-Along with the Environment Variables from the [Base image](https://hub.docker.com/r/tiredofit/alpine), below is the complete list of available options that can be used to customize your installation.
+Along with the Environment Variables from the [Base image](https://hub.docker.com/r/rusxakep/alpine), below is the complete list of available options that can be used to customize your installation.
 
 
 | Parameter          | Description                                                                                                                            | Default              |
