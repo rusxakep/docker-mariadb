@@ -2,7 +2,7 @@ FROM tiredofit/alpine:edge
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ENV MARIADB_VERSION=10.5.9 \
-    MYSQLTUNER_VERSION=1.7.17 \
+    MYSQLTUNER_VERSION=1.7.21 \
     ZABBIX_HOSTNAME=mariadb-db \
     ENABLE_SMTP=FALSE \
     ENABLE_CRON=FALSE
