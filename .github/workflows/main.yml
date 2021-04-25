@@ -6,10 +6,10 @@ name: 'Build Images'
 on:
   push:
     paths:
-    - '**'
-    - '!README.md'
+      - '**'
+      - '!README.md'
 jobs:
-  docker:
+  master:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,10 +28,10 @@ jobs:
              fi
 
             case ${BRANCH} in
-              "main" | "master" )
+              main | master | *-master )
                   BRANCHTAG="${DOCKER_IMAGE}:latest"
                 ;;
-              "develop" )
+              develop | *-develop )
                   BRANCHTAG="${DOCKER_IMAGE}:develop"
                 ;;
               * )
@@ -82,20 +82,20 @@ jobs:
         id: Label
         run: |
           if [ -f "Dockerfile" ] ; then
-            sed -i "/FROM .*/a LABEL tiredofit.image.git_repository=\"https://github.com/${GITHUB_REPOSITORY}\"" Dockerfile
-            sed -i "/FROM .*/a LABEL tiredofit.image.git_commit=\"${GITHUB_SHA}\"" Dockerfile
-            sed -i "/FROM .*/a LABEL tiredofit.image.git_committed_by=\"${GITHUB_ACTOR}\"" Dockerfile
-            sed -i "/FROM .*/a LABEL tiredofit.image.image_build_date=\"$(date +'%Y-%m-%d %H:%M:%S')\"" Dockerfile
+            sed -i "/FROM .*/a LABEL mariadb.image.git_repository=\"https://github.com/${GITHUB_REPOSITORY}\"" Dockerfile
+            sed -i "/FROM .*/a LABEL mariadb.image.git_commit=\"${GITHUB_SHA}\"" Dockerfile
+            sed -i "/FROM .*/a LABEL mariadb.image.git_committed_by=\"${GITHUB_ACTOR}\"" Dockerfile
+            sed -i "/FROM .*/a LABEL mariadb.image.image_build_date=\"$(date +'%Y-%m-%d %H:%M:%S')\"" Dockerfile
             if [ -f "CHANGELOG.md" ] ; then
-              sed -i "/FROM .*/a LABEL tiredofit.image.git_changelog_version=\"$(head -n1 ./CHANGELOG.md | awk '{print $2}')\"" Dockerfile
+              sed -i "/FROM .*/a LABEL mariadb.image.git_changelog_version=\"$(head -n1 ./CHANGELOG.md | awk '{print $2}')\"" Dockerfile
             fi
 
             if [[ $GITHUB_REF == refs/tags/* ]]; then
-              sed -i "/FROM .*/a LABEL tiredofit.image.git_tag=\"${GITHUB_REF#refs/tags/v}\"" Dockerfile
+              sed -i "/FROM .*/a LABEL mariadb.image.git_tag=\"${GITHUB_REF#refs/tags/v}\"" Dockerfile
             fi
 
             if [[ $GITHUB_REF == refs/heads/* ]]; then
-              sed -i "/FROM .*/a LABEL tiredofit.image.git_branch=\"${GITHUB_REF#refs/heads/}\"" Dockerfile
+              sed -i "/FROM .*/a LABEL mariadb.image.git_branch=\"${GITHUB_REF#refs/heads/}\"" Dockerfile
             fi
           fi
 
