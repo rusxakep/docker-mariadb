@@ -68,6 +68,7 @@ RUN export CPU=`cat /proc/cpuinfo | grep -c processor` && \
     # Build maridb
     mkdir -p /tmp/_ && \
     cd /usr/src/mariadb && \
+    sed 's/END()/ENDIF()' libmariadb/cmake/ConnectorName.cmake && \
     cmake . \
         -DCMAKE_BUILD_TYPE=MinSizeRel \
         -DCOMMON_C_FLAGS="-O3 -s -fno-omit-frame-pointer -pipe" \
